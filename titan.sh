@@ -45,6 +45,8 @@ docker pull nezha123/titan-edge
 for ((i=1; i<=container_count; i++))
 do
     current_rpc_port=$((start_rpc_port + i - 1))
+	
+	echo "current_rpc_port = $current_rpc_port"
 
     # 判断用户是否输入了自定义存储路径
     if [ -z "$custom_storage_path" ]; then
@@ -124,11 +126,12 @@ docker pull nezha123/titan-edge
 storage_path="$PWD/titan_storage_$container_count"
    
 current_rpc_port=$start_rpc_port
+echo "current_rpc_port = $current_rpc_port"
 # 确保存储路径存在
 mkdir -p "$storage_path"
 
 # 运行容器，并设置重启策略为always
-container_id=$(docker run -d --restart always -v "$storage_path:/root/.titanedge/storage" --name "titan$i" --net=host  nezha123/titan-edge)
+container_id=$(docker run -d --restart always -v "$storage_path:/root/.titanedge/storage" --name "titan$container_count" --net=host  nezha123/titan-edge)
 
 echo "节点 titan$i 已经启动 容器ID $container_id"
 
@@ -138,7 +141,7 @@ sleep 20
 docker exec $container_id bash -c "\
    sed -i 's/^[[:space:]]*#StorageGB = .*/StorageGB = $storage_gb/' /root/.titanedge/config.toml && \
    sed -i 's/^[[:space:]]*#ListenAddress = \"0.0.0.0:1234\"/ListenAddress = \"0.0.0.0:$current_rpc_port\"/' /root/.titanedge/config.toml && \
-   echo '容器 titan'$i' 的存储空间设置为 $storage_gb GB，RPC 端口设置为 $current_rpc_port'"
+   echo '容器 titan'$container_count' 的存储空间设置为 $storage_gb GB，RPC 端口设置为 $current_rpc_port'"
 
 # 重启容器以让设置生效
 docker restart $container_id

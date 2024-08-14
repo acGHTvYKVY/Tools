@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-function install_node_N() {
+function install_node_many() {
 
 # 读取加载身份码信息
 read -p "输入你的身份码: " id
@@ -86,7 +86,7 @@ echo "==============================所有节点均已设置并启动===========
 
 }
 
-function install_node_1() {
+function install_node_single() {
 
 # 读取加载身份码信息
 read -p "输入你的身份码: " id
@@ -192,8 +192,8 @@ function main_menu() {
         read -p "请输入选项（1-3）: " OPTION
 
         case $OPTION in
-        1) install_node_N ;;
-		2) install_node_1 ;;
+        1) install_node_many ;;
+		2) install_node_single ;;
         3) uninstall_node ;;
         *) echo "无效选项。" ;;
         esac

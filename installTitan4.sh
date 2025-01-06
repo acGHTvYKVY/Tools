@@ -7,5 +7,6 @@ sudo snap install multipass
 multipass --version
 wget https://pcdn.titannet.io/test4/bin/agent-linux.zip
 mkdir -p /root/titanagent
+sudo apt install unzip
 unzip agent-linux.zip -d /root/titanagent
 rm -rf agent-linux.zip

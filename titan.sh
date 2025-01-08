@@ -16,7 +16,7 @@ read -p "输入你的身份码: " id
 read -p "请输入你想要创建的节点数量，单IP限制最多5个节点: " container_count
 
 # 让用户输入起始 RPC 端口号
-read -p "请输入你想要设置的起始 RPC端口 （端口号请自行设定，开启5个节点端口将会依次数字顺延，建议输入30000即可）: " 
+read -p "请输入你想要设置的起始 RPC端口 （端口号请自行设定，开启5个节点端口将会依次数字顺延，建议输入30000即可）: " start_rpc_port
 
 # 让用户输入想要分配的空间大小
 read -p "请输入你想要分配每个节点的存储空间大小（GB），单个上限2T, 网页生效较慢，等待20分钟后，网页查询即可: " storage_gb
@@ -44,7 +44,7 @@ docker pull nezha123/titan-edge
 # 创建用户指定数量的容器
 for ((i=1; i<=container_count; i++))
 do
-    current_rpc_port=$(( + i - 1))
+    current_rpc_port=$(( start_rpc_port + i - 1))
 	
 	echo "current_rpc_port = $current_rpc_port"
 
@@ -97,7 +97,7 @@ read -p "输入你的身份码: " id
 read -p "请输入你想要创建的节点的序号 " container_count
 
 # 让用户输入起始 RPC 端口号
-read -p "请输入你想要设置的起始 RPC端口 （端口号请自行设定，开启5个节点端口将会依次数字顺延，建议输入30000即可）: " 
+read -p "请输入你想要设置的起始 RPC端口 （端口号请自行设定，开启5个节点端口将会依次数字顺延，建议输入30000即可）: " start_rpc_port
 
 # 让用户输入想要分配的空间大小
 read -p "请输入你想要分配每个节点的存储空间大小（GB），单个上限2T, 网页生效较慢，等待20分钟后，网页查询即可: " storage_gb
@@ -125,7 +125,7 @@ docker pull nezha123/titan-edge
 # 创建用户指定数量的容器
 storage_path="$PWD/titan_storage_$container_count"
    
-current_rpc_port=$
+current_rpc_port=$start_rpc_port
 echo "current_rpc_port = $current_rpc_port"
 # 确保存储路径存在
 mkdir -p "$storage_path"

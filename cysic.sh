@@ -41,6 +41,6 @@ EOF
 cd ~/cysic-verifier/
 chmod +x ~/cysic-verifier/verifier
 echo "LD_LIBRARY_PATH=. CHAIN_ID=534352 nohup ./verifier >outputCysi.log 2>&1 &" > ~/cysic-verifier/run.sh
-echo "kill -9 \`ps aux | grep '/root/executor/executor/bin/executor' |grep -v grep| awk '{print $2}'\`">stop.sh
+echo "kill -9 \`ps aux | grep '/verifier' |grep -v grep| awk '{print $2}'\`">stop.sh
 chmod +x ~/cysic-verifier/run.sh
 chmod +x ~/cysic-verifier/stop.sh

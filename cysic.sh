@@ -40,7 +40,7 @@ EOF
 # 第三段命令：设置执行权限并启动verifier
 cd ~/cysic-verifier/
 chmod +x ~/cysic-verifier/verifier
-echo "LD_LIBRARY_PATH=. CHAIN_ID=534352 nohup ./verifier >outputCysi.log 2>&1 &" > ~/cysic-verifier/run.sh
+echo "LD_LIBRARY_PATH=. CHAIN_ID=534352 nohup /root/cysic-verifier/verifier >/root/cysic-verifier/output.log 2>&1 &" > ~/cysic-verifier/run.sh
 echo "kill -9 \`ps aux | grep '/verifier' |grep -v grep| awk '{print \$2}'\`">stop.sh
 chmod +x ~/cysic-verifier/run.sh
 chmod +x ~/cysic-verifier/stop.sh

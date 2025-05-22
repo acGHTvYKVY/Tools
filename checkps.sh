@@ -1,8 +1,7 @@
 #!/bin/bash
+while true; do
 PID=`ps aux | grep '/root/executor/executor/bin/executor' | grep -v grep | awk '{print $2}' | wc -l`
-
 echo $PID
-
 #if[ $PID="" ]; then
 if [ "$PID" = "0" ]; then
   echo "BRN没启动"
@@ -10,3 +9,5 @@ if [ "$PID" = "0" ]; then
 else
   echo "BRN启动着"
 fi
+sleep 10
+done

@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup /root/checkps.sh >/root/autoRestart.log 2>&1 &
+nohup /root/checkps.sh >/root/outputAutoRestart.log 2>&1 &

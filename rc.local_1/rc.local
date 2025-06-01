@@ -4,7 +4,7 @@ export HOME=/root
 eval "cd /root/forta && ./run.sh"
 sleep 1
 
-eval "cd /root && ./autoRestart.sh
+eval "cd /root && ./autoRestart.sh"
 sleep 1
 
 exit 0

@@ -1,1 +1,4 @@
+#!/bin/sh -e
+export HOME=/root
 
+exit 0
